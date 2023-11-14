@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Button, Image, TextInput } from 'react-native'
+import { View, Text, Pressable, Button, Image, TextInput, Alert } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { IguanesContext } from '../_layout';
 import Styles from '../../constants/Styles';
@@ -38,21 +38,29 @@ const AddIguane = () => {
     };
   
     const addIguane = ()=> {
-      //création d'un iguane
-      const newIguane : Iguane = {
-        //a changer 
-        id: 9,
-        nom: nom,
-        description: description,
-        couleur: couleur,
-        taille: parseInt(taille),
-        poids: parseInt(poids),
-        isFav: false,
-        image: image
-      }
-      //ajout a la liste globale
-      addToIguanesGlobal(iguanesGlobal, newIguane);
-      router.replace("/");
+     if(nom.length > 0 && description.length > 0 && image.length > 0){
+        //création d'un iguane
+        const newIguane : Iguane = {
+          //a changer 
+          id: 9,
+          nom: nom,
+          description: description,
+          couleur: couleur,
+          taille: parseInt(taille),
+          poids: parseInt(poids),
+          isFav: false,
+          image: image
+        }
+        //ajout a la liste globale
+        addToIguanesGlobal(iguanesGlobal, newIguane);
+        router.replace("/");
+     }
+     else {
+      Alert.alert('Annonce invalide', 'Veuillez remplir tout les champs svp.', [
+        {text: 'OK'},
+      ]);
+     }
+     
     }
 
 
@@ -68,13 +76,12 @@ const AddIguane = () => {
           </View>    
           <View style={Styles.inputWrap}>
             <Text style={Styles.inputTitreRow}>Couleur</Text>
-            
             <Input
               onChangeText={text => onChangeCouleur(text)}
               value={couleur}/>
           </View>  
         </View>
-        
+          
         <View style={Styles.rowIguaneAdd}>
           <View style={Styles.inputWrap}>
             <Text style={Styles.inputTitreRow}>Taille</Text>
@@ -111,7 +118,6 @@ const AddIguane = () => {
         </View>
 
       </View>
-          
       )
 }
 

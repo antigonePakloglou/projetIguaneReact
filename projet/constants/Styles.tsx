@@ -88,6 +88,10 @@ export default StyleSheet.create({
         padding: 5
         
     },
+    iguaneCaract: {
+        fontSize: 16,
+        color: Colors.blue
+    },
     favoris: {
         marginTop: 20
     },

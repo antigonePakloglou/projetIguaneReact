@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity, Button } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { Stack, router, useGlobalSearchParams } from 'expo-router'
 import { IguanesContext } from '../_layout';
-import { AntDesign } from '@expo/vector-icons'
+import { AntDesign, FontAwesome5, Ionicons } from '@expo/vector-icons'
 import Styles from '../../constants/Styles';
 import Colors from '../../constants/Colors';
 
@@ -71,6 +71,10 @@ const DetailIguane = () => {
         <Image style={Styles.iguaneImg}
                   source={{uri: iguane?.image}}
             />
+        
+        
+        <Text style={Styles.iguaneCaract}> {iguane?.poids} Kg - {iguane?.taille} cm - {iguane?.couleur}</Text> 
+       
         <Text style={Styles.iguaneDescription}>{iguane?.description}</Text>
         <TouchableOpacity style={Styles.favoris} onPress={()=> onPressFav()}> 
           <AntDesign name={iconName} size={36} color={Colors.orange } /> 
@@ -78,7 +82,7 @@ const DetailIguane = () => {
         <Text style={Styles.favorisText}>Ajouter au favoris</Text> 
       </View>
       <View style={Styles.accueilBtn}>
-        <Button title="Accueil" color={Colors.darkBlue}  onPress={()=>router.replace('/home')}></Button>
+        <Button title="Accueil" color={Colors.blue}  onPress={()=>router.replace('/home')}></Button>
       </View>  
     </View>
   )
