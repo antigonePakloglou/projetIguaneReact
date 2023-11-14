@@ -63,6 +63,7 @@ export default StyleSheet.create({
         borderColor: Colors.darkBlue,
         borderRadius: 50,
         padding: 20,
+        width: 300
         
        
     },
@@ -106,13 +107,18 @@ export default StyleSheet.create({
     inputDescription: {
         width:280, 
         textAlignVertical: 'top',
-        backgroundColor: Colors.black,
-        borderRadius: 40,
+        backgroundColor: Colors.ligthBlue,
+        borderRadius: 10,
         padding: 10
     }, 
     inputTitre : {
         fontSize: 16,
         fontWeight: '800'
+    },
+    inputTitreRow : {
+        fontSize: 16,
+        fontWeight: '800',
+        textAlign: 'center'
     },
     btnPhoto: {
         height: 60,
@@ -122,6 +128,13 @@ export default StyleSheet.create({
         justifyContent : 'center',
         alignItems : 'center',
       
+    },
+    rowIguaneAdd: {
+        flex: 1,
+        flexDirection: "row"
+    },
+    inputWrap: {
+        flex: 1,
     },
     /* infos Iguane */
     infoTitre: {

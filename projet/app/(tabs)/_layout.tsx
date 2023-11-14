@@ -10,6 +10,7 @@ export default () => {
       <Tabs.Screen name="home"   options={{
         tabBarActiveTintColor: Colors.blue,
         tabBarInactiveTintColor: Colors.orange,
+        tabBarHideOnKeyboard: true,
         headerShown: false,
         tabBarIcon: (({focused}) => <FontAwesome5 name="home" size={24} color={focused ? Colors.blue : Colors.orange} />)
       }} />

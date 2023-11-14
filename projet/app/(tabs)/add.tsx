@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Button, Image } from 'react-native'
+import { View, Text, Pressable, Button, Image, TextInput } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { IguanesContext } from '../_layout';
 import Styles from '../../constants/Styles';
@@ -13,6 +13,7 @@ const AddIguane = () => {
     const {addToIguanesGlobal, iguanesGlobal} = useContext(IguanesContext) as unknown as IguaneContextType;
 
     const [nom, onChangeNom] = useState<string>("");
+    const [description, onChangeDescription] = useState<string>("");
     const [couleur, onChangeCouleur] = useState<string>("");
     const [taille, onChangeTaille] = useState<string>("");
     const [poids, onChangePoids] = useState<string>("");
@@ -42,6 +43,7 @@ const AddIguane = () => {
         //a changer 
         id: 9,
         nom: nom,
+        description: description,
         couleur: couleur,
         taille: parseInt(taille),
         poids: parseInt(poids),
@@ -56,43 +58,60 @@ const AddIguane = () => {
 
 
     return (
-      <View style={[Styles.iguaneCard, {marginTop: 50, backgroundColor: Colors.white}]}>
-          
-        <Text style={Styles.inputTitre}>Nom</Text>
-        <Input
-          onChangeText={text => onChangeNom(text)}
-          value={nom}/>
-       
-        <Text style={Styles.inputTitre}>Couleur</Text>
-        <Input
-          onChangeText={text => onChangeCouleur(text)}
-          value={couleur}/>
-
-        <Text style={Styles.inputTitre}>Taille</Text>
-        <Input
-         keyboardType='numeric'
-          onChangeText={text => onChangeTaille(text)}
-          value={taille}/>
-
-        <Text style={Styles.inputTitre}>Poids</Text>
-        <Input
-        keyboardType='numeric'
-        onChangeText={text => onChangePoids(text)}
-        value={poids}/>
-
+      <View style={[Styles.iguaneCard, {marginTop: 50, backgroundColor: Colors.white, position: 'absolute', alignSelf: 'center'}]}>
+        <View style={Styles.rowIguaneAdd}>
+          <View style={Styles.inputWrap}>
+            <Text style={Styles.inputTitreRow}>Nom</Text>
+            <Input
+              onChangeText={text => onChangeNom(text)}
+              value={nom}/>
+          </View>    
+          <View style={Styles.inputWrap}>
+            <Text style={Styles.inputTitreRow}>Couleur</Text>
+            
+            <Input
+              onChangeText={text => onChangeCouleur(text)}
+              value={couleur}/>
+          </View>  
+        </View>
+        
+        <View style={Styles.rowIguaneAdd}>
+          <View style={Styles.inputWrap}>
+            <Text style={Styles.inputTitreRow}>Taille</Text>
+            <Input
+              keyboardType='numeric'
+              onChangeText={text => onChangeTaille(text)}
+              value={taille}/>
+          </View>
+          <View style={Styles.inputWrap}>
+            <Text style={Styles.inputTitreRow}>Poids</Text>
+            <Input
+              keyboardType='numeric'
+              onChangeText={text => onChangePoids(text)}
+              value={poids}/>
+          </View>    
+        </View>
+        <Text style={Styles.inputTitre}>Description</Text>
+        <TextInput
+          multiline={true}
+          numberOfLines={2}
+          style={Styles.inputDescription}
+          value={description}
+          onChangeText={text => onChangeDescription(text)}
+          />
         <Text style={Styles.inputTitre}>Image</Text>
         
         <Pressable style={Styles.btnPhoto} onPress={pickImage}>
         <MaterialCommunityIcons name="file-image-plus" size={24} color={Colors.blue} />
         </Pressable>
           {image && <Image source={{ uri: image }} style={{ width: 100, height: 100 }} />}
-       
+      
         <View style={Styles.btnAjouter}>
           <Button onPress={()=> addIguane()} title="Ajouter l'annonce" color={Colors.orange} />
         </View>
-       
-    
-       </View>
+
+      </View>
+          
       )
 }
 
