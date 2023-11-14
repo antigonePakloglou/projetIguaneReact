@@ -1,10 +1,12 @@
-import { View, Text, Image, TouchableOpacity, Button } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
+import { View, Text, Image, TouchableOpacity, Button, Pressable, Alert } from 'react-native'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Stack, router, useGlobalSearchParams } from 'expo-router'
 import { IguanesContext } from '../_layout';
-import { AntDesign, FontAwesome5, Ionicons } from '@expo/vector-icons'
+import { AntDesign, FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons'
 import Styles from '../../constants/Styles';
 import Colors from '../../constants/Colors';
+import * as MediaLibrary from 'expo-media-library';
+import { captureRef } from 'react-native-view-shot';
 
 const DetailIguane = () => {
     const {id} = useGlobalSearchParams();
@@ -14,6 +16,16 @@ const DetailIguane = () => {
     const [loading, setLoading] = useState(true);
     const [iconName, setIconName] = useState("hearto");
 
+   
+    //permission médiatheque appareil
+    const [status, requestPermission] = MediaLibrary.usePermissions();
+    const imageRef = useRef();
+
+    //demande des autorisations
+    if (status === null) {
+      requestPermission();
+    }
+  
     
     useEffect(() => {
         //recupere parametres
@@ -59,6 +71,26 @@ const DetailIguane = () => {
     )
   }
 
+  //sauvegarder les annonces sur l'appareil
+  const saveIguaneAnnonceAsync = async () => {
+    try {
+      const localUri = await captureRef(imageRef, {
+        height: 440,
+        quality: 1,
+        format: 'jpg'
+      });
+
+      await MediaLibrary.saveToLibraryAsync(localUri);
+      if (localUri) {
+        Alert.alert('Annonce sauvegardée', 'Disponible dans votre galerie', [
+          {text: 'OK'},
+        ]);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <View>
        <Stack.Screen
@@ -66,24 +98,32 @@ const DetailIguane = () => {
           headerShown: false,
         }}
       />
-      <View style={[Styles.iguaneCard, {marginTop: 100, alignSelf: 'center'}]}>
-        <Text style={Styles.iguaneNom}>{iguane?.nom}</Text>
-        <Image style={Styles.iguaneImg}
-                  source={{uri: iguane?.image}}
-            />
+      <View ref={imageRef} collapsable={true}>
+        <View style={[Styles.iguaneCard, {marginTop: 100, alignSelf: 'center', backgroundColor: Colors.white}]}>
+          <Text style={Styles.iguaneNom}>{iguane?.nom}</Text>
+          <Image style={Styles.iguaneImg}
+                    source={{uri: iguane?.image}}
+              />
+          
+          
+          <Text style={Styles.iguaneCaract}> {iguane?.poids} Kg - {iguane?.taille} cm - {iguane?.couleur}</Text> 
         
+          <Text style={Styles.iguaneDescription}>{iguane?.description}</Text>
+          <View style={Styles.favoris}>
+            <TouchableOpacity  onPress={()=> onPressFav()}> 
+              <AntDesign name={iconName} size={32} color={Colors.orange } /> 
+            </TouchableOpacity>  
+            
+            <Pressable style={{marginLeft: 20}} onPress={()=>saveIguaneAnnonceAsync()}>
+            <FontAwesome name="save" size={32} color={Colors.darkBlue} />
+          </Pressable>
+          </View>
         
-        <Text style={Styles.iguaneCaract}> {iguane?.poids} Kg - {iguane?.taille} cm - {iguane?.couleur}</Text> 
-       
-        <Text style={Styles.iguaneDescription}>{iguane?.description}</Text>
-        <TouchableOpacity style={Styles.favoris} onPress={()=> onPressFav()}> 
-          <AntDesign name={iconName} size={36} color={Colors.orange } /> 
-        </TouchableOpacity>  
-        <Text style={Styles.favorisText}>Ajouter au favoris</Text> 
+        </View>
       </View>
       <View style={Styles.accueilBtn}>
-        <Button title="Accueil" color={Colors.blue}  onPress={()=>router.replace('/home')}></Button>
-      </View>  
+          <Button title="Accueil" color={Colors.blue}  onPress={()=>router.replace('/home')}></Button>
+        </View> 
     </View>
   )
 }
