@@ -12,5 +12,5 @@ type Iguane = {
 interface IguaneContextType {
     iguanesGlobal: Iguane[];
     addToIguanesGlobal: (iguanesGlobal:any, iguaneToAdd:any) => void;
-    modifyIguanesGlobal: (iguanesGlobal:any, iguaneToModifie:any) => void;
+    modifyIguanesGlobal: (iguanesGlobal:any, iguaneToModifie:any, newFav:any) => void;
 } 

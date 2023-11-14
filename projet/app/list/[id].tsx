@@ -28,27 +28,27 @@ const DetailIguane = () => {
             changeIconFav();
             setLoading(false);
         }
-    }, [id]);
+    }, [id, iguane]);
 
      //click ajout favoris
     const onPressFav = ()=> {
         if(iguane){
-            iguane.isFav = iguane.isFav ? false : true;
-            setIguane(iguane => iguane);
+            let newFav = iguane.isFav ? false : true;
             //modifie la liste des iguanes global 
-            modifyIguanesGlobal(iguanesGlobal, iguane);
+            modifyIguanesGlobal(iguanesGlobal, iguane, newFav);
             //gestion affichage de l'icon
             changeIconFav();
         }
        
     }
+ 
 
   const changeIconFav = ()=> {
     if(iguane){
         if(iguane.isFav == true){
-            setIconName("heart")
+            setIconName(iconName => "heart") 
         } else {  
-            setIconName("hearto")
+            setIconName(iconName=> "hearto")
         }
     }
   }
@@ -66,7 +66,7 @@ const DetailIguane = () => {
           headerShown: false,
         }}
       />
-      <View style={[Styles.iguaneCard, {marginTop: 100}]}>
+      <View style={[Styles.iguaneCard, {marginTop: 100, alignSelf: 'center'}]}>
         <Text style={Styles.iguaneNom}>{iguane?.nom}</Text>
         <Image style={Styles.iguaneImg}
                   source={{uri: iguane?.image}}

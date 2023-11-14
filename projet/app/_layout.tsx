@@ -15,13 +15,14 @@ const StackLayout = ()=> {
          setIguanesGlobal(iguanes => [...iguanes, iguaneToAdd])
      }
      //modification de l'iguane ajouté et/ou supprimé des favoris
-     const modifyIguanesGlobal = (iguanes:any, iguaneToModifie:any) => {
+     const modifyIguanesGlobal = (iguanes:any, iguaneToModifie:any, newFav:any) => {
+        console.log('newFav :>> ', newFav);
          setIguanesGlobal(iguanes => {
-             let allIguanes = iguanes.filter(item => item.id !== iguaneToModifie.id)
+             let allIguanes = iguanes.filter(item => item.id !== iguaneToModifie.id);
+             iguaneToModifie.isFav = newFav;
              return [...allIguanes, iguaneToModifie]
          })
      }
-     
     
     return (
         <IguanesContext.Provider value={{iguanesGlobal, modifyIguanesGlobal, addToIguanesGlobal}}>
