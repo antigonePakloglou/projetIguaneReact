@@ -1,6 +1,7 @@
 type Iguane = {
     id: number
     nom: string
+    description: string
     couleur: string
     taille: number
     poids : number

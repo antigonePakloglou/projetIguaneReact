@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity, Button } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
-import { router, useGlobalSearchParams } from 'expo-router'
+import { Stack, router, useGlobalSearchParams } from 'expo-router'
 import { IguanesContext } from '../_layout';
 import { AntDesign } from '@expo/vector-icons'
 import Styles from '../../constants/Styles';
@@ -60,21 +60,27 @@ const DetailIguane = () => {
   }
 
   return (
-    
-    <View style={Styles.iguaneCard}>
-    <Text style={Styles.iguaneNom}>{iguane?.nom}</Text>
-    <Image style={Styles.iguaneImg}
-              source={{uri: iguane?.image}}
-        />
-    {/* <Text style={Styles.iguaneDescription}>{iguane.description}</Text> */}
-    <TouchableOpacity style={Styles.favoris} onPress={()=> onPressFav()}> 
-      <AntDesign name={iconName} size={36} color={Colors.orange } /> 
-    </TouchableOpacity>  
-    <Text style={Styles.favorisText}>Ajouter au favoris</Text> 
-    <View style={Styles.accueilBtn}>
-      <Button title="Accueil" color={Colors.darkBlue}  onPress={()=>router.replace('/')}></Button>
-    </View>  
-  </View>
+    <View>
+       <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+      />
+      <View style={[Styles.iguaneCard, {marginTop: 100}]}>
+        <Text style={Styles.iguaneNom}>{iguane?.nom}</Text>
+        <Image style={Styles.iguaneImg}
+                  source={{uri: iguane?.image}}
+            />
+        <Text style={Styles.iguaneDescription}>{iguane?.description}</Text>
+        <TouchableOpacity style={Styles.favoris} onPress={()=> onPressFav()}> 
+          <AntDesign name={iconName} size={36} color={Colors.orange } /> 
+        </TouchableOpacity>  
+        <Text style={Styles.favorisText}>Ajouter au favoris</Text> 
+      </View>
+      <View style={Styles.accueilBtn}>
+        <Button title="Accueil" color={Colors.darkBlue}  onPress={()=>router.replace('/home')}></Button>
+      </View>  
+    </View>
   )
 }
 

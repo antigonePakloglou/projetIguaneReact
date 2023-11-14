@@ -3,6 +3,7 @@ export const iguanes = {
         {
             id: 1,
             nom: 'Catherine',
+            description: 'Jeune iguane assez craintif. Se laisse difficilement approcher.',
             couleur: 'vert',
             taille: 110,
             poids : 2.6,
@@ -12,6 +13,7 @@ export const iguanes = {
         {
             id: 2,
             nom: 'Jack',
+            description: 'Animal plutôt calme. Aime sortir en dehors de so terrarium assez souvent.',
             couleur: 'orange',
             taille: 145,
             poids : 4.2,
@@ -21,6 +23,7 @@ export const iguanes = {
         {
             id: 3,
             nom: 'Omar',
+            description: 'Omar aime sauter hors de sa cage. Il n\'apprecie pas de rester enfermer. N\'est pas craintif.',
             couleur: 'albinos',
             taille: 160,
             poids : 3,
@@ -30,6 +33,7 @@ export const iguanes = {
         {
             id: 4,
             nom: 'Peanuts',
+            description: 'Tempérament calme. Il est tres inteligent.',
             couleur: 'vert',
             taille: 190,
             poids : 8,
@@ -39,6 +43,7 @@ export const iguanes = {
         {
             id: 5,
             nom: 'Rodriguez',
+            description: 'Assez agressif pour le moment. Aura besoin d\'un propriétaire qui prenne son temps pour l\'habituer à l\'humain.',
             couleur: 'albinos',
             taille: 160,
             poids : 4,
@@ -48,6 +53,7 @@ export const iguanes = {
         {
             id: 6,
             nom: 'Ikune',
+            description: 'Très calme',
             couleur: 'vert',
             taille: 190,
             poids : 8,

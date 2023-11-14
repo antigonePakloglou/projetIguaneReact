@@ -69,7 +69,7 @@ export default StyleSheet.create({
     iguaneImg: {
         width: 250,
         height: 190,
-        marginTop: 10,
+        marginTop: 30,
         justifyContent: 'center',
         alignItems: 'center',
        
@@ -81,8 +81,9 @@ export default StyleSheet.create({
 
     },
     iguaneDescription: {
+        marginTop: 30,
         textAlign: 'center',
-        fontSize: 12,
+        fontSize: 16,
         padding: 5
         
     },
@@ -94,7 +95,9 @@ export default StyleSheet.create({
         fontStyle: 'italic'
     },
     accueilBtn : {
-        marginTop: 20
+        marginTop: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     /* Ajout iguane */
     btnAjouter: {
