@@ -36,13 +36,18 @@ const AddIguane = () => {
     
       
     };
+
+    //trouver dernier id pour incrémenter le nouvel enregistrement
+    const findLastIdIguanesGlobal : number = iguanesGlobal.reduce((maxId, currentValue) => {
+      return Math.max(maxId, currentValue.id)
+    }, 0);
   
     const addIguane = ()=> {
      if(nom.length > 0 && description.length > 0 && image.length > 0){
         //création d'un iguane
         const newIguane : Iguane = {
           //a changer 
-          id: 9,
+          id: findLastIdIguanesGlobal + 1,
           nom: nom,
           description: description,
           couleur: couleur,

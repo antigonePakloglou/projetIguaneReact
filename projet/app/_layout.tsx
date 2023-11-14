@@ -19,7 +19,6 @@ const StackLayout = ()=> {
      }
     //modification de l'iguane ajouté et/ou supprimé des favoris
     const modifyIguanesGlobal = (iguanes:any, iguaneToModifie:any, newFav:any) => {
-        console.log('newFav :>> ', newFav);
         setIguanesGlobal(iguanes => {
             let allIguanes = iguanes.filter(item => item.id !== iguaneToModifie.id);
             iguaneToModifie.isFav = newFav;

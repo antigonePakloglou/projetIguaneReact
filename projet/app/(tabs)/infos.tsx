@@ -1,8 +1,12 @@
-import { View, Text, SafeAreaView, ScrollView } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, Pressable } from 'react-native'
 import React from 'react'
 import Styles from '../../constants/Styles'
+import { envoyerMail } from '../../constants/SendEmail'
+
+
 
 const infos = () => {
+
   return (
     <SafeAreaView>
       <ScrollView >
@@ -33,6 +37,15 @@ const infos = () => {
             - Le mâle possède une crête très développé.{'\n'}
             - Son espérance de vie est d’environ 10-15 ans !{'\n'}
           </Text>
+          <Text style={Styles.infoTitre}>Nous contacter</Text>
+          <Text style={Styles.infoText}>
+            Vous pouvez avant toute adoptions nous écrire en cas de questions{'\n'}
+            <Pressable onPress={()=>envoyerMail(false)}> 
+              <Text style={Styles.infoMailIguane}>iguane.spa@hotmail.fr</Text>
+            </Pressable>
+          </Text>
+
+          
         </View>
       </ScrollView>
     </SafeAreaView>

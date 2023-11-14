@@ -32,15 +32,15 @@ export default StyleSheet.create({
         height: 200
     },
     iguanesImg: {
-        width: 90,
-        height: 90,
+        width: 120,
+        height: 120,
         marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
        
     },
     iguanesTitle: {
-        fontSize: 15,
+        fontSize: 18,
         textDecorationLine: 'underline',
         textAlign: 'center',
         color : Colors.darkBlue
@@ -157,5 +157,11 @@ export default StyleSheet.create({
     infosHeader : {
        fontSize: 22,
        textDecorationLine: 'underline'
-    }
+    },
+    infoMailIguane: {
+        textAlign: 'center',
+        color: Colors.blue,
+        textDecorationLine: 'underline',
+        marginBottom: 10
+    },
 })
