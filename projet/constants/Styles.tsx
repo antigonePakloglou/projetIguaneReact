@@ -14,7 +14,7 @@ export default StyleSheet.create({
     },
     titleIguane: {
        fontWeight: '700',
-       fontSize: 20,
+       fontSize: 22,
        color: Colors.orange,
        textDecorationLine: 'underline'
     },
@@ -45,6 +45,14 @@ export default StyleSheet.create({
         textAlign: 'center',
         color : Colors.darkBlue
     },
+    infoIguane: {
+        fontSize: 12,
+        textAlign: 'center'
+    },
+    linkInfoIguane : {
+        fontWeight: '600',
+        textDecorationLine: 'underline'
+    },
     /* Affichage unitaire iguane */
     iguaneCard: {
         marginTop: 50,
@@ -55,6 +63,7 @@ export default StyleSheet.create({
         borderColor: Colors.darkBlue,
         borderRadius: 50,
         padding: 20,
+        
        
     },
     iguaneImg: {
@@ -111,4 +120,21 @@ export default StyleSheet.create({
         alignItems : 'center',
       
     },
+    /* infos Iguane */
+    infoTitre: {
+        textAlign: 'center',
+        fontWeight: '600',
+        fontSize: 18,
+        color: Colors.darkBlue,
+        textDecorationLine: 'underline'
+
+    },
+    infoText : {
+        textAlign: 'center',
+        fontSize: 12
+    },
+    infosHeader : {
+       fontSize: 22,
+       textDecorationLine: 'underline'
+    }
 })

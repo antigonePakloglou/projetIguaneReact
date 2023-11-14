@@ -33,6 +33,9 @@ const ListeIguanes = () => {
     <View style={Styles.container}>
     <View style={Styles.titleIguaneView}>
           <Text style={Styles.titleIguane}>Nos iguanes à adopter</Text>
+          <View style={{padding: 10}}>
+            <Text style={Styles.infoIguane}>Lire les informations <Link href={"/infos"} style={Styles.linkInfoIguane}>ici</Link> avant toutes démarches</Text>
+          </View>
       </View>
     <FlatList
       data={iguanesGlobal}

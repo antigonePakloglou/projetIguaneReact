@@ -56,7 +56,7 @@ const AddIguane = () => {
 
 
     return (
-      <View style={[Styles.iguaneCard, {marginTop: 50}]}>
+      <View style={[Styles.iguaneCard, {marginTop: 50, backgroundColor: Colors.white}]}>
           
         <Text style={Styles.inputTitre}>Nom</Text>
         <Input
