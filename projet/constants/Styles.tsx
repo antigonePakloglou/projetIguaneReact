@@ -93,7 +93,8 @@ export default StyleSheet.create({
         color: Colors.blue
     },
     favoris: {
-        marginTop: 20
+        marginTop: 25,
+        flexDirection: "row"
     },
     favorisText: {
         fontSize: 8,
