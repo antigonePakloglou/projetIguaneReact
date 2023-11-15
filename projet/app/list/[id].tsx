@@ -114,13 +114,13 @@ const DetailIguane = () => {
               <AntDesign name={iconName} size={32} color={Colors.orange } /> 
             </TouchableOpacity>  
 
-            <Pressable style={{marginLeft: 20}} onPress={()=> envoyerMail(true, iguane)}>
+            <TouchableOpacity style={{marginLeft: 20}} onPress={()=> envoyerMail(true, iguane)}>
             <AntDesign name="mail" size={33}  color={Colors.blue }  />
-            </Pressable>
+            </TouchableOpacity>
             
-            <Pressable style={{marginLeft: 20}} onPress={()=> saveIguaneAnnonceAsync()}>
+            <TouchableOpacity style={{marginLeft: 20}} onPress={()=> saveIguaneAnnonceAsync()}>
               <FontAwesome name="save" size={32} color={Colors.darkBlue} />
-            </Pressable>
+            </TouchableOpacity>
           </View>
         
         </View>

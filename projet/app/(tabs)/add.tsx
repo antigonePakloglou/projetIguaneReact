@@ -43,7 +43,7 @@ const AddIguane = () => {
     }, 0);
   
     const addIguane = ()=> {
-     if(nom.length > 0 && description.length > 0 && image.length > 0){
+     if(nom.length > 0 && description.length > 0 && image.length > 0  && couleur.length > 0 && taille.length > 0 && poids.length > 0){
         //création d'un iguane
         const newIguane : Iguane = {
           //a changer 
@@ -52,7 +52,7 @@ const AddIguane = () => {
           description: description,
           couleur: couleur,
           taille: parseInt(taille),
-          poids: parseInt(poids),
+          poids: parseFloat(poids),
           isFav: false,
           image: image
         }
